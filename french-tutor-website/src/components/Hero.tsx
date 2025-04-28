@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Stack, Text, Image } from "@chakra-ui/react";
+import { Box, Button, Flex, Stack, Text, Image } from "@chakra-ui/react";
 import { Typewriter } from "react-simple-typewriter";
 import heroImage from "../assets/hero_image_1.jpeg";
 import french_resume from "../assets/french resume.pdf";

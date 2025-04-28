@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Text, Stack, List, ListItem } from "@chakra-ui/react";
+import { Box, Flex, Heading, Stack, List, ListItem } from "@chakra-ui/react";
 
 function education() {
   return (
