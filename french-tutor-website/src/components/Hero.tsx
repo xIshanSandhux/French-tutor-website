@@ -54,14 +54,6 @@ function Hero() {
           </Text>
 
           <Stack direction="row" h='20'>
-          <Button mt={4}
-          colorPalette="gray"
-          size="md"
-          variant="surface"
-          onClick={() => window.open(french_resume, '_blank')}
-          >
-             View My Resume
-             </Button>
              <Button mt={4}
           colorPalette="gray"
           size="md"
