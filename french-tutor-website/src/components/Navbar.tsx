@@ -6,7 +6,7 @@ function Navbar() {
     <Box as="nav" bg="white" px={5} py={4} shadow="sm" position="sticky" top={0} zIndex={10}>
       <Flex align="center">
         <Heading size="2xl" fontFamily="Merriweather" fontWeight="semibold" color="black">
-          Learn French with Gurpreet
+        Madame Teaches French
         </Heading>
         <Spacer />
         <HStack wrap="wrap" gap="7">
