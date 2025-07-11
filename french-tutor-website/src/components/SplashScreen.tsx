@@ -1,22 +1,31 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+// SplashScreen.tsx
+import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
+import { useColorMode } from "./ui/color-mode";
+import samplelogo from "../assets/samplelogo.png";
 
 interface SplashScreenProps {
   onComplete: () => void;
 }
 
+const MotionBox = motion(Box);
+
 function SplashScreen({ onComplete }: SplashScreenProps) {
   const [isVisible, setIsVisible] = useState(true);
+  const { setColorMode } = useColorMode();
 
   useEffect(() => {
+    // Force light mode for splash screen
+    setColorMode("light");
+    
     const timer = setTimeout(() => {
       setIsVisible(false);
-      setTimeout(onComplete, 500); // Wait for fade out animation
-    }, 5000); // Show splash for 4 seconds
-
+      setTimeout(onComplete, 500);
+    }, 5000);
     return () => clearTimeout(timer);
-  }, [onComplete]);
+  }, [onComplete, setColorMode]);
 
   return (
     <Box
@@ -25,7 +34,7 @@ function SplashScreen({ onComplete }: SplashScreenProps) {
       left={0}
       right={0}
       bottom={0}
-      bg="blue.50"
+      bgGradient="linear(to-b, #e0ecff, white)"
       zIndex={9999}
       opacity={isVisible ? 1 : 0}
       transition="opacity 0.5s ease-in-out"
@@ -35,34 +44,75 @@ function SplashScreen({ onComplete }: SplashScreenProps) {
         align="center"
         justify="center"
         height="100vh"
-        gap={8}
+        px={6}
+        gap={6}
       >
-
+        {/* Tutor Image */}
+        <MotionBox
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <Image
+            src={samplelogo}
+            alt="French Tutor"
+            boxSize={{ base: "100px", md: "150px" }}
+            borderRadius="full"
+            boxShadow="lg"
+            mb={4}
+          />
+        </MotionBox>
 
         {/* Welcome Text */}
-        <Text fontSize="3xl" fontFamily="Merriweather" fontWeight="bold" color="gray.700">
-          <Typewriter
-            words={["Bienvenue!"]}
-            cursor
-            cursorStyle="|"
-            typeSpeed={100}
-            deleteSpeed={50}
-            delaySpeed={1500}
-          />
-        </Text>
+        <MotionBox
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 1 }}
+        >
+          <Text
+            fontSize={{ base: "3xl", md: "5xl" }}
+            fontFamily="Playfair Display, serif"
+            fontWeight="bold"
+            color="blue.800"
+            textAlign="center"
+          >
+            <Typewriter
+              words={["Welcome to Madame Teaches French !"]}
+              cursor
+              cursorStyle="|"
+              typeSpeed={100}
+              deleteSpeed={50}
+              delaySpeed={1500}
+            />
+          </Text>
+        </MotionBox>
 
         {/* Subtitle */}
-        <Text fontSize="lg" color="gray.600" textAlign="center" maxW="400px">
-          <Typewriter
-            words={[
-              "Apprenez le français avec confiance"]}
-            cursor
-            cursorStyle="|"
-            typeSpeed={70}
-            deleteSpeed={30}
-            delaySpeed={1500}
-          />
-        </Text>
+        <MotionBox
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 1 }}
+        >
+          <Text
+            fontSize={{ base: "md", md: "xl" }}
+            color="gray.600"
+            textAlign="center"
+            maxW="400px"
+            fontFamily="Open Sans"
+          >
+            Master French for your studies, your travels, and your future.
+          </Text>
+        </MotionBox>
+
+        {/* Decorative Line */}
+        <Box h="2px" w="80px" bg="blue.300" mt={2} borderRadius="full" />
+
+        <MotionBox
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 2 }}
+        >
+        </MotionBox>
       </Flex>
     </Box>
   );
