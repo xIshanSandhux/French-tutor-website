@@ -1,91 +1,147 @@
-import { Box, Button, Flex, Stack, Text, Image } from "@chakra-ui/react";
-import { Typewriter } from "react-simple-typewriter";
+import {
+  Box,
+  Button,
+  Flex,
+  Stack,
+  Text,
+  Image,
+  Heading,
+  Icon,
+} from "@chakra-ui/react";
+import { motion } from "framer-motion";
+// import { Typewriter } from "react-simple-typewriter";
+// import { FaLinkedin } from "react-icons/fa";
 import heroImage from "../assets/hero_image_1.jpeg";
-import french_resume from "../assets/french resume.pdf";
 
 
-
+const MotionFlex = motion(Flex);
+const MotionBox = motion(Box);
 
 function Hero() {
   return (
-    <Box bg="#f6f9fc" minH="100vh" px={6} py={6} id="Hero">
-      {/* Flex container to arrange text and image side by side */}
-      <Flex
-        // direction={{ base: "column", md: "row" }}
-        // align="center"
-        // justify="space-between"
-        // minH="90vh"
-        // px={{ base: 4, md: 20 }}
-        // gap={12}
+    <Box
+      id="Hero"
+      position="relative"
+      bgGradient="linear(to-b, #eaf6fb, white)"
+      minH="100vh"
+      px={{ base: 6, md: 20 }}
+      py={{ base: 14, md: 24 }}
+      overflow="hidden"
+    >
+      {/* Soft abstract glow blob */}
+      <Box
         position="absolute"
-        top="7%"   // <-- move it higher by controlling this
-        left="16%"
-        right="10%"
-        direction={{ base: "column", md: "row" }}
+        top="-100px"
+        right="-100px"
+        width="300px"
+        height="300px"
+        bg="rgba(201, 230, 236, 0.8)"
+        opacity={0.3}
+        filter="blur(1px)"
+        borderRadius="100%"
+        zIndex={0}
+      />
+
+      <Box
+        position="absolute"
+        bottom="-100px"
+        left="-100px"
+        width="300px"
+        height="300px"
+        bg="rgba(201, 230, 236, 0.8)"
+        opacity={0.3}
+        filter="blur(1px)"
+        borderRadius="100%"
+        zIndex={0}
+      />
+
+      <MotionFlex
+        direction={{ base: "column-reverse", md: "row" }}
         align="center"
         justify="space-between"
-        gap={20}
+        maxW="1200px"
+        mx="auto"
+        gap={{ base: 14, md: 20 }}
+        zIndex={1}
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
       >
-        {/* Text Box */}
-        <Box textAlign="left" flex="2">
-          <Text fontSize="4xl" fontFamily="Merriweather" fontWeight="semibold" color="gray.700">
-            <Typewriter
-              words={["Bonjour! Je m'appelle Gurpreet", "Hi! My name is Gurpreet"]}
-              cursor
-              cursorStyle="|"
-              typeSpeed={90}
-              deleteSpeed={90}
-              delaySpeed={8000}
-            />
+        {/* Text Section */}
+        <MotionBox
+          flex="1"
+          textAlign={{ base: "center", md: "left" }}
+          maxW="600px"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          <Heading
+            as="h1"
+            fontSize={{ base: "3xl", md: "5xl" }}
+            // fontFamily="Playfair Display"
+            fontWeight="bold"
+            color="gray.800"
+            mb={4}
+          >
+            
+            <Box 
+            as="span" 
+            color="black.500"
+            fontSize={{ base: "3xl", md: "3xl" }}
+            // fontFamily="Merriweather"
+            fontWeight="bold"
+            >
+              Bonjour! My name is Gurpreet
+            </Box>
+          </Heading>
+
+          <Text fontSize={{ base: "md", md: "lg" }} color="gray.600" lineHeight="1.8" mb={8}>
+          I help students master French through personalized lessons — designed to support their university studies, travel plans, or exam goals.
           </Text>
 
-          <Text fontSize="lg" color="gray.600" >
-            <Typewriter
-              words={[
-                "J'aide les étudiants à maîtriser le français avec des cours personnalisés juste pour eux.",
-                "I help students master French with lessons customized just for them.",
-              ]}
-              cursor
-              cursorStyle="|"
-              typeSpeed={50}
-              deleteSpeed={30}
-              delaySpeed={5000}
-            />
-          </Text>
+          {/* <Stack direction="row" justify={{ base: "center", md: "flex-start" }}>
+            <Button
+              size="lg"
+              rounded="full"
+              px={8}
+              bg="black"
+              color="white"
+              leftIcon={<Icon as={FaLinkedin} />}
+              _hover={{
+                bg: "blue.600",
+                boxShadow: "0 0 12px rgba(59, 130, 246, 0.6)",
+                transform: "translateY(-2px)",
+              }}
+              onClick={() => window.open("https://www.linkedin.com/in/preetk3121/", "_blank")}
+            >
+              Connect on LinkedIn
+            </Button>
+          </Stack> */}
+        </MotionBox>
 
-          <Stack direction="row" h='20'>
-             <Button mt={4}
-          colorPalette="gray"
-          size="md"
-          variant="surface"
-          onClick={() => window.open('https://www.linkedin.com/in/preetk3121/', '_blank')}
-          >
-             LinkedIn
-             </Button>
-             
-          </Stack>
-          {/* <Button mt={4}
-          colorPalette="gray"
-          size="md"
-          variant="surface"
-          onClick={() => window.open(french_resume, '_blank')}
-          >
-             View My Resume
-             </Button> */}
-        </Box>
-
-        {/* Image Box */}
-        <Box flex="1" textAlign="center">
+        {/* Image Section */}
+        <MotionBox
+          flex="1"
+          textAlign="center"
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+        >
           <Image
-            src={heroImage} // <- your image file here (keep it in public folder)
+            src={heroImage}
+            display="flex"
             alt="Preeti - French Tutor"
-            boxSize={{ base: "250px", md: "350px" }}
-            borderRadius="full" // makes it circular
+            boxSize={{ base: "260px", md: "360px" }}
+            borderRadius="full"
             objectFit="cover"
-            boxShadow="lg"
+            border="6px solid white"
+            boxShadow="0 0 0 6px white, 0 8px 30px rgba(0, 0, 0, 0.68)"
+            transition="transform 0.4s ease"
+            _hover={{ transform: "scale(1.03)" }}
           />
-        </Box>
-      </Flex>
+        </MotionBox>
+      </MotionFlex>
     </Box>
   );
 }
