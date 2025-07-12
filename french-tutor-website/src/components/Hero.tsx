@@ -8,7 +8,7 @@ import french_resume from "../assets/french resume.pdf";
 
 function Hero() {
   return (
-    <Box bg="blue.50" minH="100vh" px={6} py={6} id="Hero">
+    <Box bg="#f6f9fc" minH="100vh" px={6} py={6} id="Hero">
       {/* Flex container to arrange text and image side by side */}
       <Flex
         // direction={{ base: "column", md: "row" }}
