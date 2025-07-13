@@ -34,7 +34,7 @@ function SplashScreen({ onComplete }: SplashScreenProps) {
       left={0}
       right={0}
       bottom={0}
-      bgGradient="linear(to-b, #e0ecff, white)"
+      bgGradient="rgba(201, 230, 236, 0.8)"
       zIndex={9999}
       opacity={isVisible ? 1 : 0}
       transition="opacity 0.5s ease-in-out"
@@ -58,7 +58,9 @@ function SplashScreen({ onComplete }: SplashScreenProps) {
             alt="French Tutor"
             boxSize={{ base: "100px", md: "150px" }}
             borderRadius="full"
-            boxShadow="lg"
+            // boxShadow="lg"
+            border="6px solid white"
+            boxShadow="0 0 0 6px white, 0 8px 30px rgba(0, 0, 0, 0.68)"
             mb={4}
           />
         </MotionBox>
@@ -71,13 +73,13 @@ function SplashScreen({ onComplete }: SplashScreenProps) {
         >
           <Text
             fontSize={{ base: "3xl", md: "5xl" }}
-            fontFamily="Playfair Display, serif"
+            // fontFamily="Playfair Display, serif"
             fontWeight="bold"
             color="blue.800"
             textAlign="center"
           >
             <Typewriter
-              words={["Welcome to Madame Teaches French !"]}
+              words={["Welcome to French Academy !"]}
               cursor
               cursorStyle="|"
               typeSpeed={100}

@@ -30,7 +30,7 @@ function Navbar() {
           color="black.800"
           letterSpacing="tight"
         >
-          Madame Teaches French
+          French Academy
         </Heading>
         <Spacer />
         <HStack gap={6}>

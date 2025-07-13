@@ -1,51 +1,98 @@
 import { Box, Flex, Heading, Text, Stack, Image } from "@chakra-ui/react";
-import aboutImage from "../assets/about_image.jpeg"; // you can add a separate about image too if you want!
+// import aboutImage from "../assets/about_image.jpeg";
+import headerImage from "../assets/hero_image_1.jpeg";
+import { motion } from "framer-motion";
+
+const MotionBox = motion(Box);
 
 function About() {
   return (
-    <Box id="about" bg="blue.50" minH="100vh" px={6} py={6}>
-      <Flex
-        direction={{ base: "column", md: "row" }}
-        align="center"
-        justify="space-between"
+    <Box
+      id="about"
+      bgGradient="linear(to-b, #eaf6fb, white)"
+      minH="100vh"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      px={{ base: 1, md: 15 }}
+      py={{ base: 1, md: 10 }}
+      position="relative"
+    >
+      <Box
+        position="absolute"
+        bottom="-100px"
+        right="-100px"
+        width="300px"
+        height="300px"
+        bg="rgba(201, 230, 236, 0.8)"
+        opacity={0.3}
+        filter="blur(1px)"
+        borderRadius="100%"
+        zIndex={1}
+      />
+      <MotionBox
+        bg="rgba(201, 230, 236, 0.8)"
+        borderRadius="xl"
+        border="3px solid white"
+        boxShadow="0 8px 25px rgba(108, 175, 202, 0.72)"
         maxW="1000px"
-        mx="auto"
-        mt="10%"
-        gap={24}
+        width="100%"
+        p={{ base: 6, md: 10 }}
+        display="flex"
+        flexDirection={{ base: "column", md: "row" }}
+        alignItems="center"
+        gap={{ base: 10, md: 20 }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.3 , ease: "easeIn"}}
+        whileHover={{
+          y: -4,
+          boxShadow: "0 8px 25px rgba(108, 175, 202, 0.97)",
+          transition: { duration: 0.3, ease: "easeInOut" }
+        }}
+        
       >
-        {/* Text Section */}
-        <Box flex="1.7" textAlign={{ base: "center", md: "left" }}>
-          <Stack gap={6}>
-            <Heading as="h2" size="6xl" fontFamily="Merriweather" color="gray.700">
-              About Me
-            </Heading>
-
-            <Text fontSize="xl" color="gray.600" fontFamily="Merriweather">
-              Bonjour! I'm Preeti, a passionate French tutor with over 8 years of experience helping students master the beautiful French language.
-            </Text>
-
-            <Text fontSize="xl" color="gray.600" fontFamily="Merriweather">
-              Whether you're a complete beginner or looking to sharpen your skills, I customize each lesson based on your needs and learning style.
-            </Text>
-
-            <Text fontSize="xl" color="gray.600" fontFamily="Merriweather">
-              My approach is interactive, practical, and focused on building confidence. Let's make learning French an exciting and rewarding journey!
-            </Text>
-          </Stack>
-        </Box>
-
-        {/* Image Section */}
-        <Box flex="1" textAlign="center" >
+        {/* Image Box */}
+        <Box flexShrink={0}>
           <Image
-            src={aboutImage} // use another picture if you want
+            src={headerImage}
             alt="Preeti - French Tutor"
-            boxSize={{ base: "250px", md: "350px" }}
+            boxSize={{ base: "220px", md: "300px" }}
             borderRadius="full"
             objectFit="cover"
-            boxShadow="lg"
+            border="3px solid white"
+            boxShadow="0 0 0 6px white, 0 8px 30px rgba(0, 0, 0, 0.68)"
           />
         </Box>
-      </Flex>
+
+        {/* Text Box */}
+        <Stack gap={5} textAlign={{ base: "center", md: "left" }}>
+          <Heading
+            as="h2"
+            size="4xl"
+            fontWeight="bold"
+            // fontFamily="Playfair Display"
+            color="black.700"
+          >
+            About Me
+          </Heading>
+
+          <Text fontSize="lg" color="gray.700">
+            Hi! I'm Preeti, a passionate French tutor with over 8 years of
+            experience helping students master the beautiful French language.
+          </Text>
+
+          <Text fontSize="lg" color="gray.700" >
+            Whether you're a complete beginner or preparing for an exam, I
+            tailor lessons to your style — engaging, interactive, and results-driven.
+          </Text>
+
+          <Text fontSize="lg" color="gray.700" >
+            Let’s make French feel simple and exciting for your goals!
+          </Text>
+        </Stack>
+      </MotionBox>
     </Box>
   );
 }
