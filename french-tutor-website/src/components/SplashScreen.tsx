@@ -79,7 +79,7 @@ function SplashScreen({ onComplete }: SplashScreenProps) {
             textAlign="center"
           >
             <Typewriter
-              words={["Welcome to Madame Teaches French !"]}
+              words={["Welcome to French Academy !"]}
               cursor
               cursorStyle="|"
               typeSpeed={100}

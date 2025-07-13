@@ -26,7 +26,7 @@ function Hero() {
       minH="100vh"
       px={{ base: 6, md: 20 }}
       py={{ base: 14, md: 24 }}
-      overflow="hidden"
+      // overflow="hidden"
     >
       {/* Soft abstract glow blob */}
       <Box
@@ -92,7 +92,7 @@ function Hero() {
             // fontFamily="Merriweather"
             fontWeight="bold"
             >
-              Bonjour! My name is Gurpreet
+              Hi! My name is Preeti
             </Box>
           </Heading>
 
@@ -136,7 +136,7 @@ function Hero() {
             borderRadius="full"
             objectFit="cover"
             border="6px solid white"
-            boxShadow="0 0 0 6px white, 0 8px 30px rgba(0, 0, 0, 0.68)"
+            boxShadow="0 8px 25px rgba(108, 175, 202, 0.97)"
             transition="transform 0.4s ease"
             _hover={{ transform: "scale(1.03)" }}
           />
