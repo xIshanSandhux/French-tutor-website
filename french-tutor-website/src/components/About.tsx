@@ -18,7 +18,7 @@ function About() {
       py={{ base: 1, md: 10 }}
       position="relative"
     >
-      {/* Background blob */}
+      {/* Background blob
       <Box
         position="absolute"
         bottom="-100px"
@@ -30,7 +30,7 @@ function About() {
         filter="blur(1px)"
         borderRadius="100%"
         zIndex={1}
-      />
+      /> */}
 
       {/* Content */}
       <Stack gap={10} align="center" zIndex={2}>

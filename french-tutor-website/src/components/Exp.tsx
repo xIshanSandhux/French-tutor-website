@@ -18,32 +18,7 @@ function Exp() {
       position="relative"
       overflow="hidden"
     >
-      {/* Background Glow Blobs */}
-      <Box
-        position="absolute"
-        bottom="-100px"
-        right="-100px"
-        width="300px"
-        height="300px"
-        bg="rgba(201, 230, 236, 0.8)"
-        opacity={0.3}
-        filter="blur(1px)"
-        borderRadius="full"
-        zIndex={1}
-      />
-      <Box
-        position="absolute"
-        top="-50px"
-        left="-50px"
-        width="200px"
-        height="200px"
-        bg="rgba(201, 230, 236, 0.6)"
-        opacity={0.2}
-        filter="blur(1px)"
-        borderRadius="full"
-        zIndex={1}
-      />
-
+     
       {/* Content */}
       <Stack gap={10} align="center" zIndex={2} maxW="1200px" w="100%">
         <Heading
@@ -56,12 +31,12 @@ function Exp() {
           Experience: Freelance French Tutor (2016 - Present)
         </Heading>
 
-    <SimpleGrid columns={{ base: 1, md: 2 }} gap={8} width="100%" justifyContent="center" alignItems="center">
+    <SimpleGrid columns={{ base: 1, md: 2 }} gap={8} display="flex" justifyContent="center" alignItems="center">
    {/* Location Card */}
     <MotionBox
     bg="rgba(201, 230, 236, 0.8)"
     borderRadius="xl"
-    border="3px solid white"
+    border="3.5px solid white"
     boxShadow="0 8px 25px rgba(108, 175, 202, 0.72)"
     p={6}
     initial={{ opacity: 0, scale: 0.95 }}
@@ -70,7 +45,7 @@ function Exp() {
     transition={{ duration: 0.3, ease: "easeIn" }}
     whileHover={{
       y: -4,
-      boxShadow: "0 8px 25px rgba(108, 175, 202, 0.97)",
+      boxShadow: "0 8px 25px rgba(39, 162, 211, 0.97)",
       transition: { duration: 0.3, ease: "easeInOut" },
     }}
     > 
@@ -90,29 +65,42 @@ function Exp() {
       </Stack>    
   </MotionBox>
 
+{/* Responsibilities Card */}
+      <MotionBox
+        bg="rgba(201, 230, 236, 0.8)"
+        borderRadius="xl"
+        border="3.5px solid white"
+        boxShadow="0 8px 25px rgba(108, 175, 202, 0.72)"
+        p={6}
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.3, ease: "easeIn" }}
+        whileHover={{
+          y: -4,
+          boxShadow: "0 8px 25px rgba(39, 162, 211, 0.97)",
+          transition: { duration: 0.3, ease: "easeInOut" },
+        }}
+        > 
+        <Stack gap={5}>
+          <Heading as="h4" size="2xl" mb={4} textAlign="center" color="blackAlpha.800">
+          Responsibilities:
+          </Heading>
+          <Text fontSize="lg" color="black.700" textAlign="center">
+          Delivered tailored French instruction to Grades 1-9.
+          </Text>
+          <Text fontSize="lg" color="black.700" textAlign="center">
+          Created CEFR-aligned lesson plans & evaluated progress.
+          </Text>
+          <Text fontSize="lg" color="black.700" textAlign="center">
+          Taught in English, Hindi, Punjabi, and French (online & offline).
+          </Text>
+          </Stack>    
+      </MotionBox>
 
-  {/* Responsibilities Card */}
-  <MotionBox
-    bg="rgba(201, 230, 236, 0.8)"
-    borderRadius="xl"
-    border="2px solid white"
-    boxShadow="md"
-    p={6}
-    whileHover={{
-      y: -4,
-      boxShadow: "lg",
-      transition: { duration: 0.3, ease: "easeInOut" },
-    }}
-  >
-    <Heading as="h4" size="lg" mb={4} textAlign="center" color="blackAlpha.800">
-      Responsibilities
-    </Heading>
-    <List.Root gap={2} fontSize="md" color="gray.700">
-      <ListItem>Delivered tailored French instruction to Grades 1-9.</ListItem>
-      <ListItem>Created CEFR-aligned lesson plans & evaluated progress.</ListItem>
-      <ListItem>Taught in English, Hindi, Punjabi, and French (online & offline).</ListItem>
-    </List.Root>
-  </MotionBox>
+
+  
+  
 </SimpleGrid>
 
       </Stack>

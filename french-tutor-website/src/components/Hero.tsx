@@ -28,33 +28,7 @@ function Hero() {
       py={{ base: 14, md: 24 }}
       // overflow="hidden"
     >
-      {/* Soft abstract glow blob */}
-      <Box
-        position="absolute"
-        top="-100px"
-        right="-100px"
-        width="300px"
-        height="300px"
-        bg="rgba(201, 230, 236, 0.8)"
-        opacity={0.3}
-        filter="blur(1px)"
-        borderRadius="100%"
-        zIndex={0}
-      />
-
-      <Box
-        position="absolute"
-        bottom="-100px"
-        left="-100px"
-        width="300px"
-        height="300px"
-        bg="rgba(201, 230, 236, 0.8)"
-        opacity={0.3}
-        filter="blur(1px)"
-        borderRadius="100%"
-        zIndex={0}
-      />
-
+      
       <MotionFlex
         direction={{ base: "column-reverse", md: "row" }}
         align="center"
