@@ -1,24 +1,24 @@
-import { Box, Flex, Heading, Stack, List, ListItem, SimpleGrid } from "@chakra-ui/react";
-
+import { Box, Flex, Heading, Text, Stack, Image } from "@chakra-ui/react";
+// import aboutImage from "../assets/about_image.jpeg";
+import headerImage from "../assets/hero_image_1.jpeg";
 import { motion } from "framer-motion";
 
 const MotionBox = motion(Box);
 
-function Exp() {
+function About() {
   return (
     <Box
-      id="exp"
+      id="about"
       bgGradient="linear(to-b, #eaf6fb, white)"
       minH="100vh"
       display="flex"
       alignItems="center"
       justifyContent="center"
-      px={{ base: 2, md: 10 }}
-      py={{ base: 10, md: 20 }}
+      px={{ base: 1, md: 15 }}
+      py={{ base: 1, md: 10 }}
       position="relative"
-      overflow="hidden"
     >
-      {/* Background Glow Blobs */}
+      {/* Background blob */}
       <Box
         position="absolute"
         bottom="-100px"
@@ -28,24 +28,13 @@ function Exp() {
         bg="rgba(201, 230, 236, 0.8)"
         opacity={0.3}
         filter="blur(1px)"
-        borderRadius="full"
-        zIndex={1}
-      />
-      <Box
-        position="absolute"
-        top="-50px"
-        left="-50px"
-        width="200px"
-        height="200px"
-        bg="rgba(201, 230, 236, 0.6)"
-        opacity={0.2}
-        filter="blur(1px)"
-        borderRadius="full"
+        borderRadius="100%"
         zIndex={1}
       />
 
       {/* Content */}
-      <Stack gap={10} align="center" zIndex={2} maxW="1200px" w="100%">
+      <Stack gap={10} align="center" zIndex={2}>
+        {/* Heading above the card */}
         <Heading
           as="h2"
           size="4xl"
@@ -53,91 +42,65 @@ function Exp() {
           color="blackAlpha.800"
           textAlign="center"
         >
-          Experience
+          About Me
         </Heading>
 
-        <Heading
-          as="h3"
-          size="2xl"
-          fontWeight="bold"
-          color="blackAlpha.800"
-          textAlign="center"
+        {/* Card */}
+        <MotionBox
+          bg="rgba(201, 230, 236, 0.8)"
+          borderRadius="xl"
+          border="3px solid white"
+          boxShadow="0 8px 25px rgba(108, 175, 202, 0.72)"
+          maxW="1000px"
+          width="100%"
+          p={{ base: 6, md: 10 }}
+          display="flex"
+          flexDirection={{ base: "column", md: "row" }}
+          alignItems="center"
+          gap={{ base: 10, md: 20 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.3, ease: "easeIn" }}
+          whileHover={{
+            y: -4,
+            boxShadow: "0 8px 25px rgba(108, 175, 202, 0.97)",
+            transition: { duration: 0.3, ease: "easeInOut" },
+          }}
         >
-          Freelance French Tutor
-        </Heading>
+          {/* Image */}
+          <Box flexShrink={0}>
+            <Image
+              src={headerImage}
+              alt="Preeti - French Tutor"
+              boxSize={{ base: "220px", md: "300px" }}
+              borderRadius="full"
+              objectFit="cover"
+              border="3px solid white"
+              boxShadow="0 0 0 6px white, 0 8px 30px rgba(0, 0, 0, 0.68)"
+            />
+          </Box>
 
-        <SimpleGrid columns={{ base: 1, md: 3 }} gap={8} width="100%">
-  {/* Location Card */}
-  <MotionBox
-    bg="rgba(201, 230, 236, 0.8)"
-    borderRadius="xl"
-    border="2px solid white"
-    boxShadow="md"
-    p={6}
-    whileHover={{
-      y: -4,
-      boxShadow: "lg",
-      transition: { duration: 0.3, ease: "easeInOut" },
-    }}
-  >
-    <Heading as="h4" size="lg" mb={4} textAlign="center" color="blackAlpha.800">
-      Locations
-    </Heading>
-    <List.Root gap={2} fontSize="md" color="gray.700">
-      <ListItem>Mumbai, India</ListItem>
-      <ListItem>Muscat, Oman</ListItem>
-      <ListItem>Online</ListItem>
-    </List.Root>
-  </MotionBox>
+          {/* Text Content */}
+          <Stack gap={5} textAlign={{ base: "center", md: "left" }}>
+            <Text fontSize="lg" color="gray.700">
+              Hi! I'm Preeti, a passionate French tutor with over 8 years of
+              experience helping students master the beautiful French language.
+            </Text>
 
-  {/* Time Card */}
-  <MotionBox
-    bg="rgba(201, 230, 236, 0.8)"
-    borderRadius="xl"
-    border="2px solid white"
-    boxShadow="md"
-    p={6}
-    whileHover={{
-      y: -4,
-      boxShadow: "lg",
-      transition: { duration: 0.3, ease: "easeInOut" },
-    }}
-  >
-    <Heading as="h4" size="lg" mb={4} textAlign="center" color="blackAlpha.800">
-      Time Period
-    </Heading>
-    <List.Root gap={2} fontSize="md" color="gray.700">
-      <ListItem>2016 – Present</ListItem>
-    </List.Root>
-  </MotionBox>
+            <Text fontSize="lg" color="gray.700">
+              Whether you're a complete beginner or preparing for an exam, I
+              tailor lessons to your style — engaging, interactive, and results-driven.
+            </Text>
 
-  {/* Responsibilities Card */}
-  <MotionBox
-    bg="rgba(201, 230, 236, 0.8)"
-    borderRadius="xl"
-    border="2px solid white"
-    boxShadow="md"
-    p={6}
-    whileHover={{
-      y: -4,
-      boxShadow: "lg",
-      transition: { duration: 0.3, ease: "easeInOut" },
-    }}
-  >
-    <Heading as="h4" size="lg" mb={4} textAlign="center" color="blackAlpha.800">
-      Responsibilities
-    </Heading>
-    <List.Root gap={2} fontSize="md" color="gray.700">
-      <ListItem>Delivered tailored French instruction to Grades 1-9.</ListItem>
-      <ListItem>Created CEFR-aligned lesson plans & evaluated progress.</ListItem>
-      <ListItem>Taught in English, Hindi, Punjabi, and French (online & offline).</ListItem>
-    </List.Root>
-  </MotionBox>
-</SimpleGrid>
-
+            <Text fontSize="lg" color="gray.700">
+              Let’s make French feel simple and exciting for your goals!
+            </Text>
+          </Stack>
+        </MotionBox>
       </Stack>
     </Box>
   );
 }
 
-export default Exp;
+export default About;
