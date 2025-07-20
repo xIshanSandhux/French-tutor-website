@@ -36,9 +36,8 @@ function Navbar() {
         <HStack gap={6}>
           {[
             { to: "about", label: "About" },
-            { to: "education", label: "Education" },
             { to: "exp", label: "Experience" },
-            { to: "services", label: "Services" },
+            { to: "service", label: "Services" },
             { to: "contact", label: "Contact" }
           ].map((item) => (
             <Link key={item.to} to={item.to} smooth={true} duration={500} offset={-70}>

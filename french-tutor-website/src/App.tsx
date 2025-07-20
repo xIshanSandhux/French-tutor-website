@@ -26,7 +26,7 @@ function App() {
       <About />
       <Exp />
       <Service />
-      <Education />
+      {/* <Education /> */}
       <Contact />
     </Box>
   );
