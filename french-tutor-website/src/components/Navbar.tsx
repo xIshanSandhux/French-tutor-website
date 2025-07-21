@@ -29,6 +29,14 @@ function Navbar() {
           fontWeight="bold" 
           color="black.800"
           letterSpacing="tight"
+          cursor="pointer"
+          onClick={() => {
+            window.location.hash = "#Hero";
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }}
         >
           French Academy
         </Heading>

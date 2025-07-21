@@ -10,6 +10,8 @@ import {
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MotionBox = motion(Box);
 
@@ -33,7 +35,21 @@ function Contact() {
         templateId,
         form.current,
         publicKey
-      )
+      ).then(() => {
+        setLoading(false);
+        toast.success("Message sent");
+        window.location.hash = "#Hero";
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+        console.log("Message sent");
+        
+      }).catch((error) => {
+        setLoading(false);
+        toast.error("Message not sent");
+        console.error("Error sending message:", error);
+      });
   };
 
   return (
@@ -119,7 +135,7 @@ function Contact() {
                 name="message"
                 border="1px solid #000"
                 placeholder="Write your message..."
-                rows={6}
+                rows={5}
                 fontFamily="Merriweather"
                 color="gray.700"
                 required
@@ -127,7 +143,7 @@ function Contact() {
 
               <Button
                 type="submit"
-                isLoading={loading}
+                loading={loading}
                 loadingText="Sending"
                 size="md"
                 fontWeight="semibold"

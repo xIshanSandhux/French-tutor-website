@@ -5,7 +5,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const MotionBox = motion(Box);
 
-function Services() {
+function Service() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -48,7 +48,7 @@ function Services() {
 
   return (
     <Box
-      id="exp"
+      id="service"
       bgGradient="linear(to-b, #eaf6fb, white)"
       minH="100vh"
       display="flex"
@@ -147,4 +147,4 @@ function Services() {
   );
 }
 
-export default Services;
+export default Service;
