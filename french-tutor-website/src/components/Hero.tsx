@@ -71,7 +71,7 @@ function Hero() {
           </Heading>
 
           <Text fontSize={{ base: "md", md: "lg" }} color="gray.600" lineHeight="1.8" mb={8}>
-          I help students master French through personalized lessons — designed to support their university studies, travel plans, or exam goals.
+          I help students master French through personalized lessons — designed to support their Immigration and academic goals
           </Text>
 
           {/* <Stack direction="row" justify={{ base: "center", md: "flex-start" }}>

@@ -29,6 +29,14 @@ function Navbar() {
           fontWeight="bold" 
           color="black.800"
           letterSpacing="tight"
+          cursor="pointer"
+          onClick={() => {
+            window.location.hash = "#Hero";
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }}
         >
           French Academy
         </Heading>
@@ -36,12 +44,11 @@ function Navbar() {
         <HStack gap={6}>
           {[
             { to: "about", label: "About" },
-            { to: "education", label: "Education" },
             { to: "exp", label: "Experience" },
-            { to: "services", label: "Services" },
+            { to: "service", label: "Services" },
             { to: "contact", label: "Contact" }
           ].map((item) => (
-            <Link key={item.to} to={item.to} smooth={true} duration={500} offset={-70}>
+            <Link key={item.to} to={item.to} smooth={true} duration={500} offset={0}>
               <Button
                 variant="ghost"
                 size="sm"

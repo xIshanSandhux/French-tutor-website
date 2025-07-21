@@ -1,13 +1,54 @@
-import { Box, Heading, Stack, Text, Flex, SimpleGrid } from "@chakra-ui/react";
+import { Box, Heading, Stack, Text, Flex, IconButton } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import { useRef } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const MotionBox = motion(Box);
 
-function Services() {
-  return (
+function Service() {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const scrollAmount = direction === "left" ? -300 : 300;
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
+  const services = [
+    {
+      title: "Personalized French Lessons",
+      description: "Tailored instruction based on each student's learning style and pace.",
+    },
+    {
+      title: "Level French Instruction (CEFR-Aligned)",
+      description: "Structured lessons to help students achieve beginner and elementary proficiency.",
+    },
+    {
+      title: "Multilingual Support",
+      description: "Lessons available in English, Hindi, Punjabi, and French.",
+    },
+    {
+      title: "Flexible Learning Options",
+      description: "Online classes or in-person tutoring across the GTA.",
+    },
+    {
+      title: "Lesson Planning and Study Materials",
+      description: "Custom worksheets and quizzes aligned with CEFR levels.",
+    },
+    {
+      title: "Student Assessment and Progress Tracking",
+      description: "Regular evaluations and feedback reports.",
+    },
+    {
+      title: "French Cultural Integration",
+      description: "Lessons enriched with French traditions and cultural elements.",
+    },
+  ];
+
+  return (
     <Box
-      id="exp"
+      id="service"
       bgGradient="linear(to-b, #eaf6fb, white)"
       minH="100vh"
       display="flex"
@@ -16,10 +57,7 @@ function Services() {
       px={{ base: 2, md: 10 }}
       py={{ base: 10, md: 20 }}
       position="relative"
-      overflow="hidden"
     >
-     
-      {/* Content */}
       <Stack gap={10} align="center" zIndex={2} maxW="1200px" w="100%">
         <Heading
           as="h2"
@@ -31,268 +69,82 @@ function Services() {
           Services Offered
         </Heading>
 
-    <SimpleGrid columns={{ base: 1, md: 2 }} gap={4}>
-   {/* Location Card */}
-    <MotionBox
-    bg="rgba(201, 230, 236, 0.8)"
-    borderRadius="xl"
-    border="3.5px solid white"
-    boxShadow="0 8px 25px rgba(108, 175, 202, 0.72)"
-    p={6}
-    initial={{ opacity: 0, scale: 0.95 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.3, ease: "easeIn" }}
-    whileHover={{
-      y: -4,
-      boxShadow: "0 8px 25px rgba(39, 162, 211, 0.97)",
-      transition: { duration: 0.3, ease: "easeInOut" },
-    }}
-    > 
-    <Stack gap={5}>
-      <Heading as="h4" size="2xl" mb={4} textAlign="center" color="blackAlpha.800">
-      Personalized French Lessons
-      </Heading>
-      <Text fontSize="lg" color="black.700" textAlign="center">
-      Tailored instruction based on each student's learning style and pace.
-      </Text>
-      </Stack>    
-  </MotionBox>
+        {/* Buttons */}
+        <Flex justify="space-between" align="center" w="full">
+          <IconButton
+            aria-label="Scroll Left"
+            onClick={() => scroll("left")}
+            variant="ghost"
+            size="lg"
+          >
+            <FaChevronLeft />
+          </IconButton>
 
-{/* Responsibilities Card */}
-      <MotionBox
-        bg="rgba(201, 230, 236, 0.8)"
-        borderRadius="xl"
-        border="3.5px solid white"
-        boxShadow="0 8px 25px rgba(108, 175, 202, 0.72)"
-        p={6}
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.3, ease: "easeIn" }}
-        whileHover={{
-          y: -4,
-          boxShadow: "0 8px 25px rgba(39, 162, 211, 0.97)",
-          transition: { duration: 0.3, ease: "easeInOut" },
-        }}
-        > 
-        <Stack>
-      <Heading as="h4" size="2xl" mb={4} textAlign="center" color="blackAlpha.800">
-      Level French Instruction (CEFR-Aligned)
-      </Heading>
-      <Text fontSize="lg" color="black.700" textAlign="center">
-      Structured lessons to help students achieve beginner and elementary proficiency.
-      </Text>
-      </Stack>     
-      </MotionBox>
+          {/* Scrollable Cards */}
+          <Flex
+            ref={scrollRef}
+            gap={6}
+            overflowX="auto"
+            py={4}
+            px={2}
+            w="full"
+            style={{
+              scrollSnapType: "x mandatory",
+              scrollBehavior: "smooth",
+            }}
+            css={{
+              "&::-webkit-scrollbar": { height: "8px" },
+              "&::-webkit-scrollbar-thumb": {
+                background: "#a0aec0",
+                borderRadius: "8px",
+              },
+            }}
+          >
+            {services.map((service, index) => (
+              <MotionBox
+                key={index}
+                minW={{ base: "280px", md: "320px" }}
+                flexShrink={0}
+                scrollSnapAlign="start"
+                bg="rgba(201, 230, 236, 0.8)"
+                borderRadius="xl"
+                border="3.5px solid white"
+                boxShadow="0 8px 25px rgba(108, 175, 202, 0.72)"
+                p={6}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, ease: "easeIn" }}
+                whileHover={{
+                  y: -4,
+                  boxShadow: "0 8px 25px rgba(39, 162, 211, 0.97)",
+                  transition: { duration: 0.3, ease: "easeInOut" },
+                }}
+              >
+                <Stack gap={5}>
+                  <Heading as="h4" size="lg" textAlign="center" color="blackAlpha.800">
+                    {service.title}
+                  </Heading>
+                  <Text fontSize="md" color="black.700" textAlign="center">
+                    {service.description}
+                  </Text>
+                </Stack>
+              </MotionBox>
+            ))}
+          </Flex>
 
-      <MotionBox
-        bg="rgba(201, 230, 236, 0.8)"
-        borderRadius="xl"
-        border="3.5px solid white"
-        boxShadow="0 8px 25px rgba(108, 175, 202, 0.72)"
-        p={6}
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.3, ease: "easeIn" }}
-        whileHover={{
-          y: -4,
-          boxShadow: "0 8px 25px rgba(39, 162, 211, 0.97)",
-          transition: { duration: 0.3, ease: "easeInOut" },
-        }}
-        > 
-        <Stack gap={5}>
-      <Heading as="h4" size="2xl" mb={4} textAlign="center" color="blackAlpha.800">
-      Multilingual Support
-      </Heading>
-      <Text fontSize="lg" color="black.700" textAlign="center">
-      Lessons available in English, Hindi, Punjabi, and French.
-      </Text>
-      </Stack>     
-      </MotionBox>
-
-      <MotionBox
-        bg="rgba(201, 230, 236, 0.8)"
-        borderRadius="xl"
-        border="3.5px solid white"
-        boxShadow="0 8px 25px rgba(108, 175, 202, 0.72)"
-        p={6}
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.3, ease: "easeIn" }}
-        whileHover={{
-          y: -4,
-          boxShadow: "0 8px 25px rgba(39, 162, 211, 0.97)",
-          transition: { duration: 0.3, ease: "easeInOut" },
-        }}
-        > 
-        <Stack gap={5} display="flex">
-      <Heading as="h4" size="2xl" mb={4} textAlign="center" color="blackAlpha.800">
-      Flexible Learning Options
-      </Heading>
-      <Text fontSize="lg" color="black.700" textAlign="center">
-      Online classes or in-person tutoring across the GTA.
-      </Text>
-      </Stack>     
-      </MotionBox>
-
-      <MotionBox
-        bg="rgba(201, 230, 236, 0.8)"
-        borderRadius="xl"
-        border="3.5px solid white"
-        boxShadow="0 8px 25px rgba(108, 175, 202, 0.72)"
-        p={6}
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.3, ease: "easeIn" }}
-        whileHover={{
-          y: -4,
-          boxShadow: "0 8px 25px rgba(39, 162, 211, 0.97)",
-          transition: { duration: 0.3, ease: "easeInOut" },
-        }}
-        > 
-        <Stack gap={5} display="flex">
-      <Heading as="h4" size="2xl" mb={4} textAlign="center" color="blackAlpha.800">
-      Lesson Planning and Study Materials
-      </Heading>
-      <Text fontSize="lg" color="black.700" textAlign="center">
-      Custom worksheets and quizzes aligned with CEFR levels.
-      </Text>
-      </Stack>     
-      </MotionBox>
-<MotionBox
-        bg="rgba(201, 230, 236, 0.8)"
-        borderRadius="xl"
-        border="3.5px solid white"
-        boxShadow="0 8px 25px rgba(108, 175, 202, 0.72)"
-        p={6}
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.3, ease: "easeIn" }}
-        whileHover={{
-          y: -4,
-          boxShadow: "0 8px 25px rgba(39, 162, 211, 0.97)",
-          transition: { duration: 0.3, ease: "easeInOut" },
-        }}
-        > 
-        <Stack gap={5} display="flex">
-      <Heading as="h4" size="2xl" mb={4} textAlign="center" color="blackAlpha.800">
-      Student Assessment and Progress Tracking
-      </Heading>
-      <Text fontSize="lg" color="black.700" textAlign="center">
-      Regular evaluations and feedback reports.
-      </Text>
-      </Stack>     
-      </MotionBox>
-
-      
-</SimpleGrid>
-<MotionBox
-        bg="rgba(201, 230, 236, 0.8)"
-        borderRadius="xl"
-        border="3.5px solid white"
-        boxShadow="0 8px 25px rgba(108, 175, 202, 0.72)"
-        p={6}
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.3, ease: "easeIn" }}
-        whileHover={{
-          y: -4,
-          boxShadow: "0 8px 25px rgba(39, 162, 211, 0.97)",
-          transition: { duration: 0.3, ease: "easeInOut" },
-        }}
-        > 
-        <Stack gap={5} display="flex">
-      <Heading as="h4" size="2xl" mb={4} textAlign="center" color="blackAlpha.800">
-      French Cultural Integration
-      </Heading>
-      <Text fontSize="lg" color="black.700" textAlign="center">
-      Lessons enriched with French traditions and cultural elements.
-      </Text>
-      </Stack>     
-      </MotionBox>
-
-
-
+          <IconButton
+            aria-label="Scroll Right"
+            onClick={() => scroll("right")}
+            variant="ghost"
+            size="lg"
+          >
+            <FaChevronRight />
+          </IconButton>
+        </Flex>
       </Stack>
     </Box>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // <Box bg="blue.50" px={6} py={6} id="services" flex="0" textAlign={{ base: "center", md: "left" }}>
-
-    //     <Flex
-    //             direction={{ base: "column", md: "row" }}
-    //             align="center"
-    //             justify="space-between"
-    //             maxW="1000px"
-    //             mx="auto"
-    //             mt="1%"
-    //             gap={10}
-    //           >
-    //               <Stack gap={4}>
-    //             <Heading as="h2" size="6xl" mb={8} fontFamily="Merriweather" textAlign="left" color="gray.700">
-    //     Services Offered
-    //   </Heading>
-    
-    //     <Text fontSize="xl" fontFamily="Merriweather" color="gray.700">
-    //       ✔️ <b>Personalized French Lessons:</b> Tailored instruction based on each student's learning style and pace.
-    //     </Text>
-
-    //     <Text fontSize="xl" fontFamily="Merriweather" color="gray.700">
-    //       ✔️ <b>A1–A2 Level French Instruction (CEFR-Aligned):</b> Structured lessons to help students achieve beginner and elementary proficiency.
-    //     </Text>
-
-    //     <Text fontSize="xl" fontFamily="Merriweather" color="gray.700">
-    //       ✔️ <b>Multilingual Support:</b> Lessons available in English, Hindi, Punjabi, and French.
-    //     </Text>
-
-    //     <Text fontSize="xl" fontFamily="Merriweather" color="gray.700">
-    //       ✔️ <b>Flexible Learning Options:</b> Online classes or in-person tutoring across the GTA.
-    //     </Text>
-
-    //     <Text fontSize="xl"  fontFamily="Merriweather" color="gray.700">
-    //       ✔️ <b>Lesson Planning and Study Materials:</b> Custom worksheets and quizzes aligned with CEFR levels.
-    //     </Text>
-
-    //     <Text fontSize="xl" fontFamily="Merriweather" color="gray.700">
-    //       ✔️ <b>Student Assessment and Progress Tracking:</b> Regular evaluations and feedback reports.
-    //     </Text>
-
-    //     <Text fontSize="xl" fontFamily="Merriweather" color="gray.700">
-    //       ✔️ <b>French Cultural Integration:</b> Lessons enriched with French traditions and cultural elements.
-    //     </Text>
-    //   </Stack>
-    //           </Flex>
-      
-    // </Box>
   );
 }
 
-export default Services;
+export default Service;
