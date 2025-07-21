@@ -5,7 +5,7 @@ import About from './components/About';
 import Education from './components/Education';
 import Exp from './components/Exp';
 import Contact from './components/contact';
-import Service from './components/service';
+import Services from './components/service';
 import SplashScreen from "./components/SplashScreen";
 import { useState } from "react";
 
@@ -25,7 +25,7 @@ function App() {
       <Hero />
       <About />
       <Exp />
-      <Service />
+      <Services />
       {/* <Education /> */}
       <Contact />
     </Box>
