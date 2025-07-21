@@ -40,7 +40,7 @@ function Navbar() {
             { to: "service", label: "Services" },
             { to: "contact", label: "Contact" }
           ].map((item) => (
-            <Link key={item.to} to={item.to} smooth={true} duration={500} offset={-70}>
+            <Link key={item.to} to={item.to} smooth={true} duration={500} offset={0}>
               <Button
                 variant="ghost"
                 size="sm"
